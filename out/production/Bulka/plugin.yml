@@ -1,0 +1,9 @@
+name: Bulka
+main: com.planetarypvp.bulka.BulkaPlugin
+version: 1.0
+bulka-out: "this/is/a/test/"
+bulka-header: "test"
+commands:
+  bulka:
+    description: use bulka
+    usage: /bulka [command] [arg1] [arg2]

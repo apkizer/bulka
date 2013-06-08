@@ -1,0 +1,3 @@
+# Example Bulka package file.
+out: "/settings/"
+header: "My project's settings"
