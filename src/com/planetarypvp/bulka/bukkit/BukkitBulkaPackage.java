@@ -1,6 +1,6 @@
-package com.planetarypvp.bulka;
+package com.planetarypvp.bulka.bukkit;
 
-import org.bukkit.Bukkit;
+import com.planetarypvp.bulka.BulkaPackage;
 
 import java.io.IOException;
 import java.io.InputStream;

@@ -1,5 +1,6 @@
-package com.planetarypvp.bulka;
+package com.planetarypvp.bulka.bukkit;
 
+import com.planetarypvp.bulka.YamlFile;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import java.io.File;

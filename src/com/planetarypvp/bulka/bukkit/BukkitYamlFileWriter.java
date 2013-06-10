@@ -1,17 +1,18 @@
-package com.planetarypvp.bulka;
+package com.planetarypvp.bulka.bukkit;
 
+import com.planetarypvp.bulka.Bulka;
+import com.planetarypvp.bulka.FileWriter;
+import com.planetarypvp.bulka.YamlFile;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.Serializable;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.nio.file.Files;
 import java.util.*;
 
 public class BukkitYamlFileWriter implements FileWriter
@@ -101,13 +102,6 @@ public class BukkitYamlFileWriter implements FileWriter
 
     private void writeMethod(YamlFile yamlFile, Method m) throws IllegalAccessException, InstantiationException
     {
-        /*System.out.println("Method name: " + m.getName());
-        if(m.getAnnotations().length > 0)
-            System.out.println("This method has an annotation!");
-        if(m.getAnnotations().length > 0)
-            System.out.println(m.getAnnotations()[0].annotationType().getName() + "," + configurableAnnotation.getName());*/
-
-
         if(m.getAnnotations().length > 0 && m.getAnnotations()[0].annotationType().getName().equals(configurableAnnotation.getName()))//TODO probably better way to compare these
         {
             Class<?> parameterType = m.getParameterTypes()[0];

@@ -1,5 +1,6 @@
 package com.planetarypvp.bulka;
 
+import com.planetarypvp.bulka.bukkit.BukkitYamlFileWriter;
 import org.bukkit.configuration.serialization.ConfigurationSerializable;
 import org.bukkit.configuration.serialization.ConfigurationSerialization;
 
@@ -82,9 +83,11 @@ public class Bulka
 
     private void findConfigurableAnnotation(ArrayList<Class<?>> classes)
     {
+        System.out.println("Finding configurable annotation... " + classes.size());
         try {
             for(Class c : classes)
             {
+                System.out.println("checking if configurable annotation... " + c.getName());
                 if(c.getSimpleName().equals("Configurable")) //TODO
                 {
                      configurableAnnotation = c;
@@ -95,7 +98,9 @@ public class Bulka
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
 
-        System.out.println("Found configurable annotation: " + configurableAnnotation.getName());
+        if(configurableAnnotation == null)
+            System.out.println("configurable annotation is null");
+        //System.out.println("Found configurable annotation: " + configurableAnnotation.getName());
     }
 
     /*private void findPackage(JarFile jarFile)
@@ -104,7 +109,7 @@ public class Bulka
 
         while(jarFile.entries().hasMoreElements())
         {
-            if(jarFile.entries().nextElement().getName().contains("bulka.package.yml"))
+            if(jarFile.entries().nextElement().getName().contains("alex.package.yml"))
             {
                 bulkaPackage = jarFile.entries().nextElement().
             }
@@ -151,14 +156,19 @@ public class Bulka
             JarEntry entry = entries.nextElement();
 
             if(entry.isDirectory() || !entry.getName().endsWith(".class"))
+            {
+                System.out.println("Not a class: " + entry.getName());
                 continue;
+            }
+
 
             String className = entry.getName().substring(0, entry.getName().length() - 6);
 
             try {
                 classes.add(classLoader.loadClass(className.replace('/', '.')));
             } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+                //e.printStackTrace();
+                getPlugin().getLogger().severe(e.getMessage());
             }
         }
 

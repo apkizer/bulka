@@ -12,7 +12,7 @@ public class BulkaPlugin extends JavaPlugin
 
     public void onEnable()
     {
-        File settings = new File(getDataFolder(), "com.planetarypvp.bulka.Bulka.txt");
+        File settings = new File(getDataFolder(), "com.albert.Bulka.txt");
         if(!settings.exists())
         {
            //TODO write file
